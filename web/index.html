@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>你的数据，你负责 · ydiyr</title>
+    <meta name="description" content="我做的 app 把数据存在你自己的设备上，同步只走你自己的 Google Drive 或 WebDAV，不经过开发者的服务器。" />
+    <link rel="canonical" href="https://your-data-is-your-responsibility.rei8t.dev/" />
+    <meta property="og:title" content="Your data is your responsibility." />
+    <meta property="og:description" content="Apps that keep your data on your device and sync only to your own Google Drive or WebDAV." />
+    <meta property="og:url" content="https://your-data-is-your-responsibility.rei8t.dev/" />
+    <meta property="og:site_name" content="ydiyr" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:image" content="https://your-data-is-your-responsibility.rei8t.dev/icon-512.png" />
+    <script>
+      // 跟随系统深浅色：Kumo 读 <html data-mode>
+      (function () {
+        var m = window.matchMedia("(prefers-color-scheme: dark)");
+        var set = function () {
+          var dark = m.matches;
+          document.documentElement.dataset.mode = dark ? "dark" : "light";
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        };
+        set();
+        m.addEventListener("change", set);
+      })();
+    </script>
+  </head>
+  <body class="bg-kumo-canvas text-kumo-default">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

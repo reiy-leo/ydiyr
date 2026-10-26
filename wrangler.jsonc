@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ydiyr",
+  "account_id": "9151f72e404dd53f20b8e6667893237d",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  // 主域名 + 短链；短链在 Worker 里 301 到主域名
+  "routes": [
+    { "pattern": "your-data-is-your-responsibility.rei8t.dev", "custom_domain": true },
+    { "pattern": "ydiyr.rei8t.dev", "custom_domain": true }
+  ],
+  "observability": { "enabled": true },
+  // pnpm build 把 web/ 构建到 ./public；请求先进 Worker（判断短链），再交给静态资源
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "single-page-application"
+  }
+}
