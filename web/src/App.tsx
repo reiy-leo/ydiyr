@@ -92,7 +92,7 @@ function Section({ id, title, lede, children }: { id?: string; title: string; le
 function IconLine({ icon, title, text, tone = "brand" }: { icon: ReactNode; title: string; text: string; tone?: "brand" | "warning" }) {
   return (
     <div className="flex items-start gap-3">
-      <span className={`flex size-8 shrink-0 items-center justify-center rounded-lg ${tone === "warning" ? "bg-kumo-warning-tint text-kumo-warning" : "bg-kumo-tint text-kumo-brand"}`}>
+      <span className={`flex size-8 shrink-0 items-center justify-center rounded-lg ${tone === "warning" ? "bg-kumo-warning-tint text-kumo-warning" : "bg-kumo-tint text-kumo-link"}`}>
         {icon}
       </span>
       <div className="grid gap-1">
@@ -153,13 +153,7 @@ function Flow({ m }: { m: Messages }) {
     <Section title={m.flow.h2} lede={m.flow.lede}>
       <LayerCard className="grid gap-5 px-5 py-6">
         <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-          <div className="flex flex-col gap-2">
-            <FlowNode icon={<Laptop size={ICON} />} label={m.flow.device} />
-            <div className="flex gap-2 text-kumo-subtle">
-              <Smartphone size={ICON} />
-              <Laptop size={ICON} />
-            </div>
-          </div>
+          <FlowNode icon={<><Laptop size={ICON} /><Smartphone size={ICON} className="-ml-0.5" /></>} label={m.flow.device} />
           <div className="flex justify-center text-kumo-subtle sm:px-2">
             <RefreshCw size={18} />
           </div>
@@ -192,7 +186,7 @@ function AppCard({ app, m }: { app: AppInfo; m: Messages }) {
   return (
     <LayerCard className="flex flex-col gap-4 px-5 py-4">
       <div className="flex items-center gap-3">
-        <span className="flex size-9 items-center justify-center rounded-lg bg-kumo-tint text-kumo-brand">{APP_ICON[app.key]}</span>
+        <span className="flex size-9 items-center justify-center rounded-lg bg-kumo-tint text-kumo-link">{APP_ICON[app.key]}</span>
         <Text variant="heading3" as="h3">{app.name}</Text>
       </div>
       <div className="grid gap-1.5">

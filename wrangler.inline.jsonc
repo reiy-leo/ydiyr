@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // 和 wrangler.jsonc 是同一个 Worker，区别：public/ 内联进脚本（用 API Token 部署时 Static Assets 上传会 401）。
+  // pnpm deploy:inline
+  "name": "ydiyr",
+  "account_id": "9151f72e404dd53f20b8e6667893237d",
+  "main": "worker-inline/entry.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "your-data-is-your-responsibility.rei8t.dev", "custom_domain": true },
+    { "pattern": "ydiyr.rei8t.dev", "custom_domain": true }
+  ],
+  "observability": { "enabled": true }
+}

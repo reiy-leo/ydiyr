@@ -8,10 +8,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "pnpm build && wrangler dev",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit --checkers 1 && tsc -p web/tsconfig.json --noEmit --checkers 1",
     "lint": "node scripts/kumo-lint.mjs",
     "test": "node scripts/kumo-lint.mjs",
-    "deploy": "pnpm build && wrangler deploy"
+    "deploy": "pnpm build && wrangler deploy",
+    "deploy:inline": "pnpm build && node scripts/build-inline-assets.mjs && wrangler deploy -c wrangler.inline.jsonc"
   },
   "dependencies": {
     "@cloudflare/kumo": "^2.15.0",
